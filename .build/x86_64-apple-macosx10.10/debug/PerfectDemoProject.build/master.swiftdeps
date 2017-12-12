@@ -1,0 +1,5 @@
+version: "Apple Swift version 4.0.3 (swiftlang-900.0.72 clang-900.0.38)"
+options: "1bc196c8d39a5305fdc66f3071325448"
+build_time: [1512980022, 709869000]
+inputs:
+  "/Users/gujiabin/Desktop/PerfectDemoProject/Sources/main.swift": [1512979222, 0]

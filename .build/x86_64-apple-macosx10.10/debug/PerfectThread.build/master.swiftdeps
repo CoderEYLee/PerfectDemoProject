@@ -1,0 +1,7 @@
+version: "Apple Swift version 4.0.3 (swiftlang-900.0.72 clang-900.0.38)"
+options: "cacf25ed1666bae6a3ad68df6fe102e1"
+build_time: [1512979378, 694514000]
+inputs:
+  "/Users/gujiabin/Desktop/PerfectDemoProject/.build/checkouts/Perfect-Thread.git-6541237758607105655/Sources/Promise.swift": [1512979358, 0]
+  "/Users/gujiabin/Desktop/PerfectDemoProject/.build/checkouts/Perfect-Thread.git-6541237758607105655/Sources/ThreadQueue.swift": [1512979358, 0]
+  "/Users/gujiabin/Desktop/PerfectDemoProject/.build/checkouts/Perfect-Thread.git-6541237758607105655/Sources/Threading.swift": [1512979358, 0]

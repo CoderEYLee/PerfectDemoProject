@@ -1,0 +1,11 @@
+version: "Apple Swift version 4.0.3 (swiftlang-900.0.72 clang-900.0.38)"
+options: "51df699ff432b1a4c7eda6d529dc990e"
+build_time: [1512979430, 706737000]
+inputs:
+  "/Users/gujiabin/Desktop/PerfectDemoProject/.build/checkouts/Perfect-Crypto.git--5196635702121641122/Sources/PerfectCrypto/Algorithms.swift": [1512979360, 0]
+  "/Users/gujiabin/Desktop/PerfectDemoProject/.build/checkouts/Perfect-Crypto.git--5196635702121641122/Sources/PerfectCrypto/ByteIO.swift": [1512979360, 0]
+  "/Users/gujiabin/Desktop/PerfectDemoProject/.build/checkouts/Perfect-Crypto.git--5196635702121641122/Sources/PerfectCrypto/Extensions.swift": [1512979360, 0]
+  "/Users/gujiabin/Desktop/PerfectDemoProject/.build/checkouts/Perfect-Crypto.git--5196635702121641122/Sources/PerfectCrypto/JWT.swift": [1512979360, 0]
+  "/Users/gujiabin/Desktop/PerfectDemoProject/.build/checkouts/Perfect-Crypto.git--5196635702121641122/Sources/PerfectCrypto/Keys.swift": [1512979360, 0]
+  "/Users/gujiabin/Desktop/PerfectDemoProject/.build/checkouts/Perfect-Crypto.git--5196635702121641122/Sources/PerfectCrypto/OpenSSLInternal.swift": [1512979360, 0]
+  "/Users/gujiabin/Desktop/PerfectDemoProject/.build/checkouts/Perfect-Crypto.git--5196635702121641122/Sources/PerfectCrypto/PerfectCrypto.swift": [1512979360, 0]
