@@ -63,7 +63,7 @@ open class EYDataBaseManager {
     /// - Parameter sql: sql语句
     /// - Returns: 返回元组(success:是否成功 result:结果)
     @discardableResult
-    func mysqlStatement(_ sql: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
+    private func mysqlStatement(sql: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
 
         guard mysql.selectDatabase(named: mysql_database) else {         //指定database
             return (false, nil, "未找到\(mysql_database)数据库")
@@ -87,7 +87,7 @@ open class EYDataBaseManager {
     func insertDatabaseSQL(tableName: String, key: String, value: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String){
 
         let SQL = "INSERT INTO \(tableName) (\(key)) VALUES (\(value))"
-        return mysqlStatement(SQL)
+        return mysqlStatement(sql: SQL)
 
     }
 
@@ -100,7 +100,7 @@ open class EYDataBaseManager {
     func deleteDatabaseSQL(tableName: String, key: String, value: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
 
         let SQL = "DELETE FROM \(tableName) WHERE \(key) = '\(value)'"
-        return mysqlStatement(SQL)
+        return mysqlStatement(sql: SQL)
 
     }
 
@@ -114,7 +114,7 @@ open class EYDataBaseManager {
     func updateDatabaseSQL(tableName: String, keyValue: String, whereKey: String, whereValue: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
 
         let SQL = "UPDATE \(tableName) SET \(keyValue) WHERE \(whereKey) = '\(whereValue)'"
-        return mysqlStatement(SQL)
+        return mysqlStatement(sql: SQL)
 
     }
 
@@ -126,7 +126,7 @@ open class EYDataBaseManager {
     func selectDatabaseSQL(tableName: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
 
         let SQL = "SELECT * FROM \(tableName)"
-        return mysqlStatement(SQL)
+        return mysqlStatement(sql: SQL)
 
     }
 
@@ -138,7 +138,7 @@ open class EYDataBaseManager {
     func selectDataBaseSQLWhere(tableName: String, keyValue: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
 
         let SQL = "SELECT * FROM \(tableName) WHERE \(keyValue)"
-        return mysqlStatement(SQL)
+		return mysqlStatement(sql: SQL)
 
     }
 }
