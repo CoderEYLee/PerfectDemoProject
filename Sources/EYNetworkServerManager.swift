@@ -45,7 +45,7 @@ open class EYNetworkServerManager {
     fileprivate func configure(routes: inout Routes) {
 
         routes.add(method: .post, uri: "/register") { (request, response) in
-            guard let params = request.postBodyString?.converToDictionaryFromJSONString,
+            guard let params = request.postBodyString?.converToDictionary,
                   let account = params["account"],
                   let password = params["password"] else {
                     let result = ["errorCode": EYErrorCodeParams]

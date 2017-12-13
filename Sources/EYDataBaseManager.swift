@@ -44,7 +44,7 @@ open class EYDataBaseManager {
     //获取t_user表中所有数据
     func mysqlSelectAllUser() -> [Dictionary<String, String>]? {
 
-        let result = selectAllDatabaseSQL(tableName: table_t_user)
+        let result = selectDatabaseSQL(tableName: table_t_user)
         var resultArray = [Dictionary<String, String>]()
         var dic = [String:String]()
         result.mysqlResult?.forEachRow(callback: { (row) in
@@ -65,17 +65,12 @@ open class EYDataBaseManager {
     @discardableResult
     func mysqlStatement(_ sql: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
 
-        guard mysql.selectDatabase(named: mysql_database) else {            //指定database
-            let msg = "未找到\(mysql_database)数据库"
-            EYLog(msg)
-            return (false, nil, msg)
+        guard mysql.selectDatabase(named: mysql_database) else {         //指定database
+            return (false, nil, "未找到\(mysql_database)数据库")
         }
 
-        let successQuery = mysql.query(statement: sql)                      //sql语句
-        guard successQuery else {
-            let msg = "SQL失败: \(sql)"
-            EYLog(msg)
-            return (false, nil, msg)
+        guard mysql.query(statement: sql) else {
+            return (false, nil, "SQL失败: \(sql)")
         }
         let msg = "SQL成功: \(sql)"
         EYLog(msg)
@@ -128,7 +123,7 @@ open class EYDataBaseManager {
     /// - Parameters:
     ///   - tableName: 表
     ///   - key: 键
-    func selectAllDatabaseSQL(tableName: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
+    func selectDatabaseSQL(tableName: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
 
         let SQL = "SELECT * FROM \(tableName)"
         return mysqlStatement(SQL)
@@ -139,8 +134,8 @@ open class EYDataBaseManager {
     ///
     /// - Parameters:
     ///   - tableName: 表
-    ///   - keyValue: 键值对的字符串 ( 键='值' AND 键='值' AND 键='值' )
-    func selectAllDataBaseSQLwhere(tableName: String, keyValue: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
+    ///   - keyValue: 键值对的字符串  键='值' AND 键='值' AND 键='值'
+    func selectDataBaseSQLWhere(tableName: String, keyValue: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
 
         let SQL = "SELECT * FROM \(tableName) WHERE \(keyValue)"
         return mysqlStatement(SQL)
