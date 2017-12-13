@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CC6BA3151FE0EB1000426ADD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6BA3141FE0EB0F00426ADD /* main.swift */; };
 		CC6BA3181FE0EB5600426ADD /* EYConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6BA3171FE0EB5600426ADD /* EYConstant.swift */; };
+		CC6BA31B1FE11D1D00426ADD /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6BA31A1FE11D1D00426ADD /* String+Extensions.swift */; };
+		CC6BA31D1FE1255800426ADD /* EYErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6BA31C1FE1255800426ADD /* EYErrorCode.swift */; };
 		CC7C123A1FDE785A0007F698 /* EYNetworkServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C12391FDE78590007F698 /* EYNetworkServerManager.swift */; };
 		CC7C12691FDF76400007F698 /* EYDataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C12681FDF76400007F698 /* EYDataBaseManager.swift */; };
 		OBJ_375 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
@@ -631,6 +633,8 @@
 /* Begin PBXFileReference section */
 		CC6BA3141FE0EB0F00426ADD /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		CC6BA3171FE0EB5600426ADD /* EYConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EYConstant.swift; sourceTree = "<group>"; };
+		CC6BA31A1FE11D1D00426ADD /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		CC6BA31C1FE1255800426ADD /* EYErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYErrorCode.swift; sourceTree = "<group>"; };
 		CC7C12391FDE78590007F698 /* EYNetworkServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYNetworkServerManager.swift; sourceTree = "<group>"; };
 		CC7C12681FDF76400007F698 /* EYDataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYDataBaseManager.swift; sourceTree = "<group>"; };
 		"COpenSSL::COpenSSL::Product" /* COpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = COpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1110,8 +1114,17 @@
 			isa = PBXGroup;
 			children = (
 				CC6BA3171FE0EB5600426ADD /* EYConstant.swift */,
+				CC6BA31C1FE1255800426ADD /* EYErrorCode.swift */,
 			);
 			path = "Define(宏定义)";
+			sourceTree = "<group>";
+		};
+		CC6BA3191FE11CD400426ADD /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				CC6BA31A1FE11D1D00426ADD /* String+Extensions.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		OBJ_10 /* Dependencies */ = {
@@ -1600,6 +1613,7 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CC6BA3191FE11CD400426ADD /* Category */,
 				CC6BA3131FE0EB0F00426ADD /* main(程序入口) */,
 				CC6BA3161FE0EB5600426ADD /* Define(宏定义) */,
 				CC7C12681FDF76400007F698 /* EYDataBaseManager.swift */,
@@ -2200,10 +2214,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				CC6BA31B1FE11D1D00426ADD /* String+Extensions.swift in Sources */,
 				CC7C12691FDF76400007F698 /* EYDataBaseManager.swift in Sources */,
 				CC7C123A1FDE785A0007F698 /* EYNetworkServerManager.swift in Sources */,
 				CC6BA3151FE0EB1000426ADD /* main.swift in Sources */,
 				CC6BA3181FE0EB5600426ADD /* EYConstant.swift in Sources */,
+				CC6BA31D1FE1255800426ADD /* EYErrorCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

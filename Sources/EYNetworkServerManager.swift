@@ -44,9 +44,18 @@ open class EYNetworkServerManager {
     /// - Parameter routes: 需要注册的路由
     fileprivate func configure(routes: inout Routes) {
 
-        routes.add(method: .get, uri: "/register") { (request, response) in
-
-            let result = EYDataBaseManager().mysqlGetHomeDataResult()
+        routes.add(method: .post, uri: "/register") { (request, response) in
+            guard let params = request.postBodyString?.converToDictionaryFromJSONString,
+                  let account = params["account"],
+                  let password = params["password"] else {
+                    let result = ["errorCode": EYErrorCodeParams]
+                    let jsonString = self.baseResponseBodyJSONData(status: 200, message: "失败", data: result)
+                    response.setBody(string: jsonString)
+                    response.completed()
+                return
+            }
+            EYLog("插入数据库 \(account) \(password)")
+            let result = EYDataBaseManager.shared.mysqlSelectAllUser()
             let jsonString = self.baseResponseBodyJSONData(status: 200, message: "成功", data: result)
             response.setBody(string: jsonString)
             response.completed()
