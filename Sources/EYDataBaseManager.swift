@@ -2,21 +2,21 @@
 //  DataBaseManager.swift
 //  PerfectDemoProject
 //
-//  Created by gujiabin on 2017/12/12.
+//  Created by lieryang on 2017/12/12.
 //
 
 import PerfectMySQL
 
 //MARK: 数据库信息
-let mysql_host = "127.0.0.1"
-let mysql_user = "root"
-let mysql_password = "LIeryang0811013!@#"
-let mysql_database = "east_soft"
+let mysql_host = "127.0.0.1"                    //访问的ip地址
+let mysql_user = "root"                         //数据库的用户名称
+let mysql_password = "LIeryang0811013!@#"       //用户的密码
+let mysql_database = "east_soft"                //要访问的数据库名称
 
 //MARK: 表信息
-let table_t_user = "t_user"                    //用户表
+let table_t_user = "t_user"        //表名称
 
-open class DataBaseManager {
+open class EYDataBaseManager {
 
     fileprivate var mysql: MySQL
     internal init() {
@@ -145,3 +145,4 @@ open class DataBaseManager {
 
     }
 }
+

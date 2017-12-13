@@ -2,7 +2,7 @@
 //  NetworkServerManager.swift
 //  PerfectDemoProject
 //
-//  Created by gujiabin on 2017/12/11.
+//  Created by lieryang on 2017/12/11.
 //
 
 import Foundation
@@ -10,13 +10,13 @@ import PerfectLib
 import PerfectHTTP
 import PerfectHTTPServer
 
-open class NetworkServerManager {
+open class EYNetworkServerManager {
 
     fileprivate var server: HTTPServer
     internal init(root: String, port: UInt16) {
 
         server = HTTPServer.init()                          //创建HTTPServer服务器
-        var routes = Routes.init(baseUri: "/api")           //创建路由器
+        var routes = Routes.init(baseUri: EYBaseURIString)          //创建路由器
         configure(routes: &routes)                          //注册路由
         server.addRoutes(routes)                            //路由添加进服务
         server.serverPort = port                            //端口
@@ -29,22 +29,24 @@ open class NetworkServerManager {
     open func startServer() {
 
         do {
-            print("启动HTTP服务器")
+            EYLog("启动HTTP服务器")
             try server.start()
         } catch PerfectError.networkError(let err, let msg) {
-            print("网络出现错误：\(err) \(msg)")
+            EYLog("网络出现错误：\(err) \(msg)")
         } catch {
-            print("网络未知错误")
+            EYLog("网络未知错误")
         }
 
     }
-
+    // MARK: -----------------------fileprivate------------------------
     //MARK: 注册路由
+    ///
+    /// - Parameter routes: 需要注册的路由
     fileprivate func configure(routes: inout Routes) {
 
-        routes.add(method: .get, uri: "/home") { (request, response) in
+        routes.add(method: .get, uri: "/register") { (request, response) in
 
-            let result = DataBaseManager().mysqlGetHomeDataResult()
+            let result = EYDataBaseManager().mysqlGetHomeDataResult()
             let jsonString = self.baseResponseBodyJSONData(status: 200, message: "成功", data: result)
             response.setBody(string: jsonString)
             response.completed()
@@ -52,16 +54,22 @@ open class NetworkServerManager {
         }
 
     }
-
-    //MARK: 通用响应格式
-    func baseResponseBodyJSONData(status: Int, message: String, data: Any!) -> String {
+    // MARK: -------------------------private-------------------------
+    /// 通用响应格式
+    ///
+    /// - Parameters:
+    ///   - status: 状态码
+    ///   - message: 描述信息
+    ///   - data: 返回的数据信息
+    /// - Returns: json字符串
+    private func baseResponseBodyJSONData(status: Int, message: String, data: Any!) -> String {
 
         var result = Dictionary<String, Any>()
         result.updateValue(status, forKey: "status")
         result.updateValue(message, forKey: "message")
         if (data != nil) {
             result.updateValue(data, forKey: "data")
-        }else{
+        } else {
             result.updateValue("", forKey: "data")
         }
         guard let jsonString = try? result.jsonEncodedString() else {
@@ -71,8 +79,8 @@ open class NetworkServerManager {
 
     }
 
-    //MARK: 404过滤
-    struct Filter404: HTTPResponseFilter {
+    /// 404过滤
+    private struct Filter404: HTTPResponseFilter {
 
         func filterBody(response: HTTPResponse, callback: (HTTPResponseFilterResult) -> ()) {
             callback(.continue)
@@ -88,7 +96,6 @@ open class NetworkServerManager {
                 callback(.continue)
             }
         }
-
     }
-
 }
+

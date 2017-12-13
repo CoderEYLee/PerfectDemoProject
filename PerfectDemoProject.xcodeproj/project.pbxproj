@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CC7C123A1FDE785A0007F698 /* NetworkServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C12391FDE78590007F698 /* NetworkServerManager.swift */; };
-		CC7C12691FDF76400007F698 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C12681FDF76400007F698 /* DataBaseManager.swift */; };
+		CC6BA3151FE0EB1000426ADD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6BA3141FE0EB0F00426ADD /* main.swift */; };
+		CC6BA3181FE0EB5600426ADD /* EYConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6BA3171FE0EB5600426ADD /* EYConstant.swift */; };
+		CC7C123A1FDE785A0007F698 /* EYNetworkServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C12391FDE78590007F698 /* EYNetworkServerManager.swift */; };
+		CC7C12691FDF76400007F698 /* EYDataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C12681FDF76400007F698 /* EYDataBaseManager.swift */; };
 		OBJ_375 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_381 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Package.swift */; };
 		OBJ_387 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* Package.swift */; };
@@ -20,7 +22,6 @@
 		OBJ_423 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_338 /* Package.swift */; };
 		OBJ_429 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_340 /* Package.swift */; };
 		OBJ_435 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_356 /* Package.swift */; };
-		OBJ_441 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* main.swift */; };
 		OBJ_443 /* PerfectMustache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "PerfectMustache::PerfectMustache::Product" /* PerfectMustache.framework */; };
 		OBJ_444 /* PerfectMySQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "PerfectMySQL::PerfectMySQL::Product" /* PerfectMySQL.framework */; };
 		OBJ_445 /* PerfectHTTPServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "PerfectHTTPServer::PerfectHTTPServer::Product" /* PerfectHTTPServer.framework */; };
@@ -628,8 +629,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CC7C12391FDE78590007F698 /* NetworkServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServerManager.swift; sourceTree = "<group>"; };
-		CC7C12681FDF76400007F698 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
+		CC6BA3141FE0EB0F00426ADD /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		CC6BA3171FE0EB5600426ADD /* EYConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EYConstant.swift; sourceTree = "<group>"; };
+		CC7C12391FDE78590007F698 /* EYNetworkServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYNetworkServerManager.swift; sourceTree = "<group>"; };
+		CC7C12681FDF76400007F698 /* EYDataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYDataBaseManager.swift; sourceTree = "<group>"; };
 		"COpenSSL::COpenSSL::Product" /* COpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = COpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_100 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/gujiabin/Desktop/PerfectDemoProject/.build/checkouts/Perfect-Crypto.git--5196635702121641122/Package.swift"; sourceTree = "<group>"; };
 		OBJ_103 /* a_.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = a_.c; sourceTree = "<group>"; };
@@ -940,7 +943,6 @@
 		OBJ_77 /* HTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponse.swift; sourceTree = "<group>"; };
 		OBJ_78 /* MimeReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimeReader.swift; sourceTree = "<group>"; };
 		OBJ_79 /* MimeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimeType.swift; sourceTree = "<group>"; };
-		OBJ_8 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		OBJ_80 /* Routing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
 		OBJ_81 /* StaticFileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticFileHandler.swift; sourceTree = "<group>"; };
 		OBJ_83 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/gujiabin/Desktop/PerfectDemoProject/.build/checkouts/Perfect-Net.git-3268755499654502659/Package.swift"; sourceTree = "<group>"; };
@@ -1096,6 +1098,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC6BA3131FE0EB0F00426ADD /* main(程序入口) */ = {
+			isa = PBXGroup;
+			children = (
+				CC6BA3141FE0EB0F00426ADD /* main.swift */,
+			);
+			path = "main(程序入口)";
+			sourceTree = "<group>";
+		};
+		CC6BA3161FE0EB5600426ADD /* Define(宏定义) */ = {
+			isa = PBXGroup;
+			children = (
+				CC6BA3171FE0EB5600426ADD /* EYConstant.swift */,
+			);
+			path = "Define(宏定义)";
+			sourceTree = "<group>";
+		};
 		OBJ_10 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
@@ -1555,7 +1573,7 @@
 			path = ".build/checkouts/Perfect-CZlib-src.git--8503750424862953877/PerfectCZlib";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -1564,7 +1582,6 @@
 				OBJ_10 /* Dependencies */,
 				OBJ_357 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_63 /* include */ = {
@@ -1583,9 +1600,10 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_8 /* main.swift */,
-				CC7C12681FDF76400007F698 /* DataBaseManager.swift */,
-				CC7C12391FDE78590007F698 /* NetworkServerManager.swift */,
+				CC6BA3131FE0EB0F00426ADD /* main(程序入口) */,
+				CC6BA3161FE0EB5600426ADD /* Define(宏定义) */,
+				CC7C12681FDF76400007F698 /* EYDataBaseManager.swift */,
+				CC7C12391FDE78590007F698 /* EYNetworkServerManager.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -2047,6 +2065,7 @@
 		OBJ_1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = EY;
 				LastUpgradeCheck = 9999;
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "PerfectDemoProject" */;
@@ -2056,7 +2075,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_357 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2181,9 +2200,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_441 /* main.swift in Sources */,
-				CC7C12691FDF76400007F698 /* DataBaseManager.swift in Sources */,
-				CC7C123A1FDE785A0007F698 /* NetworkServerManager.swift in Sources */,
+				CC7C12691FDF76400007F698 /* EYDataBaseManager.swift in Sources */,
+				CC7C123A1FDE785A0007F698 /* EYNetworkServerManager.swift in Sources */,
+				CC6BA3151FE0EB1000426ADD /* main.swift in Sources */,
+				CC6BA3181FE0EB5600426ADD /* EYConstant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2772,7 +2792,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_SWIFT_FLAGS = "-DXcode";
+				OTHER_SWIFT_FLAGS = "-DXcode -D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
@@ -2882,7 +2902,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_OPTIMIZATION_LEVEL = s;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
+				OTHER_SWIFT_FLAGS = "-DXcode -D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
