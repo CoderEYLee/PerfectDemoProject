@@ -16,7 +16,7 @@ open class EYNetworkServerManager {
     internal init(root: String, port: UInt16) {
 
         server = HTTPServer.init()                          //创建HTTPServer服务器
-        var routes = Routes.init(baseUri: EYBaseURIString)          //创建路由器
+        var routes = Routes.init(baseUri: EYBaseURIString)  //创建路由器
         configure(routes: &routes)                          //注册路由
         server.addRoutes(routes)                            //路由添加进服务
         server.serverPort = port                            //端口
@@ -38,31 +38,14 @@ open class EYNetworkServerManager {
         }
 
     }
-    // MARK: -----------------------fileprivate------------------------
+    // MARK: -----------------------private------------------------
     //MARK: 注册路由
     ///
     /// - Parameter routes: 需要注册的路由
-    fileprivate func configure(routes: inout Routes) {
-
-        routes.add(method: .post, uri: EYRegisterString) { (request, response) in
-            guard let params = request.postBodyString?.converToDictionary,
-                  let account = params["account"],
-                  let password = params["password"] else {
-                    let jsonString = self.baseResponseBodyJSONData(status: 200, errorCode: EYErrorCodeParams, data: "")
-                    response.setBody(string: jsonString)
-                    response.completed()
-                return
-            }
-
-            let result = EYDataBaseManager.shared.registerAccount(account: account as! String, password: password as! String)
-            let jsonString = self.baseResponseBodyJSONData(status: 200, errorCode: result.errorCode, data: result.data)
-            response.setBody(string: jsonString)
-            response.completed()
-
-        }
-
+    private func configure(routes: inout Routes) {
+        addRegisterPort(routes: &routes)
     }
-    // MARK: -------------------------private-------------------------
+
     /// 通用响应格式
     ///
     /// - Parameters:
@@ -70,7 +53,7 @@ open class EYNetworkServerManager {
     ///   - message: 描述信息
     ///   - data: 返回的数据信息
     /// - Returns: json字符串
-    private func baseResponseBodyJSONData(status: Int, errorCode: Int, data: Any!) -> String {
+    func baseResponseBodyJSONData(status: Int, errorCode: Int, data: Any!) -> String {
 
         var result = Dictionary<String, Any>()
         result.updateValue(status, forKey: "status")
