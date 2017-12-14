@@ -1,5 +1,5 @@
 //
-//  EYNetworkServerManager+Register.swift
+//  EYNetworkServerManager+Login.swift
 //  PerfectDemoProject
 //
 //  Created by lieryang on 2017/12/14.
@@ -10,7 +10,7 @@ import PerfectHTTP
 
 extension EYNetworkServerManager {
     /// 注册接口
-    func addRegisterPort(routes: inout Routes) {
+    func addLoginPort(routes: inout Routes) {
         routes.add(method: .post, uri: EYRegisterString) { (request, response) in
             guard let params = request.postBodyString?.converToDictionary,
                 let account = params["account"],

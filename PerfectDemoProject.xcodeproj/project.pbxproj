@@ -11,6 +11,7 @@
 		CC222A261FE256F20012E82B /* EYDataBaseManager+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC222A241FE256F20012E82B /* EYDataBaseManager+User.swift */; };
 		CC222A271FE256F20012E82B /* EYDataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC222A251FE256F20012E82B /* EYDataBaseManager.swift */; };
 		CC222A291FE26AF50012E82B /* EYNetworkServerManager+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC222A281FE26AF50012E82B /* EYNetworkServerManager+Register.swift */; };
+		CC222A2B1FE270EF0012E82B /* EYNetworkServerManager+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC222A2A1FE270EF0012E82B /* EYNetworkServerManager+Login.swift */; };
 		CC6BA3151FE0EB1000426ADD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6BA3141FE0EB0F00426ADD /* main.swift */; };
 		CC6BA3181FE0EB5600426ADD /* EYConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6BA3171FE0EB5600426ADD /* EYConstant.swift */; };
 		CC6BA31B1FE11D1D00426ADD /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6BA31A1FE11D1D00426ADD /* String+Extensions.swift */; };
@@ -627,6 +628,7 @@
 		CC222A241FE256F20012E82B /* EYDataBaseManager+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EYDataBaseManager+User.swift"; sourceTree = "<group>"; };
 		CC222A251FE256F20012E82B /* EYDataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EYDataBaseManager.swift; sourceTree = "<group>"; };
 		CC222A281FE26AF50012E82B /* EYNetworkServerManager+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EYNetworkServerManager+Register.swift"; sourceTree = "<group>"; };
+		CC222A2A1FE270EF0012E82B /* EYNetworkServerManager+Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "EYNetworkServerManager+Login.swift"; path = "Sources/NetworkServer(网络服务)/EYNetworkServerManager+Login.swift"; sourceTree = SOURCE_ROOT; };
 		CC6BA3141FE0EB0F00426ADD /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		CC6BA3171FE0EB5600426ADD /* EYConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EYConstant.swift; sourceTree = "<group>"; };
 		CC6BA31A1FE11D1D00426ADD /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -1100,6 +1102,7 @@
 			children = (
 				CC222A251FE256F20012E82B /* EYDataBaseManager.swift */,
 				CC222A241FE256F20012E82B /* EYDataBaseManager+User.swift */,
+				CC222A2A1FE270EF0012E82B /* EYNetworkServerManager+Login.swift */,
 			);
 			path = "DataBase(数据库)";
 			sourceTree = "<group>";
@@ -2196,6 +2199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				CC222A2B1FE270EF0012E82B /* EYNetworkServerManager+Login.swift in Sources */,
 				CC6BA31B1FE11D1D00426ADD /* String+Extensions.swift in Sources */,
 				CC222A261FE256F20012E82B /* EYDataBaseManager+User.swift in Sources */,
 				CC222A291FE26AF50012E82B /* EYNetworkServerManager+Register.swift in Sources */,

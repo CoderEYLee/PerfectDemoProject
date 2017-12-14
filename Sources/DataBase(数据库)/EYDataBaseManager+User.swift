@@ -2,7 +2,7 @@
 //  EYDataBaseManager+User.swift
 //  PerfectDemoProject
 //
-//  Created by gujiabin on 2017/12/14.
+//  Created by lieryang on 2017/12/14.
 //  user的相关操作
 
 extension EYDataBaseManager {
