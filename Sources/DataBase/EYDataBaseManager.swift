@@ -47,7 +47,7 @@ open class EYDataBaseManager {
     ///   - tableName: 表
     ///   - key: 键  （键，键，键）
     ///   - value: 值  ('值', '值', '值')
-    func insertDataBase(tableName: String, key: String, value: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String){
+    func insertDataBase(tableName: String, key: String, value: String) -> (success: Bool, mysqlResult: MySQL.Results?, error: String?){
 
         let SQL = "INSERT INTO \(tableName) (\(key)) VALUES (\(value))"
         return mysqlStatement(sql: SQL)
@@ -60,7 +60,7 @@ open class EYDataBaseManager {
     ///   - tableName: 表
     ///   - key: 键
     ///   - value: 值
-    func deleteDataBase(tableName: String, key: String, value: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
+    func deleteDataBase(tableName: String, key: String, value: String) -> (success: Bool, mysqlResult: MySQL.Results?, error: String?) {
 
         let SQL = "DELETE FROM \(tableName) WHERE \(key) = '\(value)'"
         return mysqlStatement(sql: SQL)
@@ -74,7 +74,7 @@ open class EYDataBaseManager {
     ///   - keyValue: 键值对的字符串 ( 键='值', 键='值', 键='值' )
     ///   - whereKey: 查找key
     ///   - whereValue: 查找value
-    func updateDataBase(tableName: String, keyValue: String, whereKey: String, whereValue: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
+    func updateDataBase(tableName: String, keyValue: String, whereKey: String, whereValue: String) -> (success: Bool, mysqlResult: MySQL.Results?, error: String?) {
 
         let SQL = "UPDATE \(tableName) SET \(keyValue) WHERE \(whereKey) = '\(whereValue)'"
         return mysqlStatement(sql: SQL)
@@ -88,7 +88,7 @@ open class EYDataBaseManager {
     ///   - selectKey: 需要查询的字段字符串 "(id, XXX, XXX)" 默认为 "*"
     ///   - otherSQLString: 其他SQL语句 "where XXX AND XXX ORDER BY XXX"
     /// - Returns: 返回信息
-    func selectDataBase(tableName: String, selectKey: String = "*", otherSQLString: String = "") -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
+    func selectDataBase(tableName: String, selectKey: String = "*", otherSQLString: String = "") -> (success: Bool, mysqlResult: MySQL.Results?, error: String?) {
 
         let SQL = "SELECT \(selectKey) FROM \(tableName) \(otherSQLString)"
         return mysqlStatement(sql: SQL)
@@ -99,9 +99,9 @@ open class EYDataBaseManager {
     /// 执行SQL语句
     ///
     /// - Parameter sql: sql语句
-    /// - Returns: 返回元组(success:是否成功 result:结果)
+    /// - Returns: 返回元组(success:是否成功 result:结果 error:错误原因)
     @discardableResult
-    private func mysqlStatement(sql: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
+    private func mysqlStatement(sql: String) -> (success: Bool, mysqlResult: MySQL.Results?, error: String?) {
 
         guard mysql.selectDatabase(named: mysql_database) else {         //指定database
             return (false, nil, "未找到\(mysql_database)数据库")
@@ -110,7 +110,8 @@ open class EYDataBaseManager {
         guard mysql.query(statement: sql) else {
             return (false, nil, "SQL失败: \(sql)")
         }
-        let msg = "SQL成功: \(sql)"
-        return (true, mysql.storeResults(), msg)    //sql执行成功
+        
+        EYLog("执行SQL成功: \(sql)")
+        return (true, mysql.storeResults(), nil)    //sql执行成功
     }
 }
