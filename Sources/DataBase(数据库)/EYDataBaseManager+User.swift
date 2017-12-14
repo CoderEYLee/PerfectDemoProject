@@ -12,7 +12,7 @@ extension EYDataBaseManager {
         let user_id = mysqlSelectMaxUserId() + 1
         let name = account
         let insertResult = insertDataBase(tableName: table_t_user, key: "user_id, account, password, name", value: "\(user_id), '\(account)', '\(password)', '\(name)'")
-        return (insertResult.isSuccess, ["account" : account, "password" : password], EYErrorCodeNull)
+        return (insertResult.isSuccess, ["account" : account, "password" : password], insertResult.isSuccess ? EYErrorCodeNull : EYErrorCodeRegister)
     }
 
     /// 查询t_user表中最大的user_id
@@ -33,21 +33,5 @@ extension EYDataBaseManager {
             user_id = Int(row[0]!) ?? 0
         })
         return user_id
-    }
-    
-    //获取t_user表中所有数据
-    func mysqlSelectAllUser() -> [Dictionary<String, String>]? {
-
-        let selectResult = selectDataBase(tableName: table_t_user)
-        var resultArray = [Dictionary<String, String>]()
-        var dic = [String:String]()
-        selectResult.result?.forEachRow(callback: { (row) in
-            dic["user_id"] = row[0]
-            dic["account"] = row[1]
-            dic["password"] = row[2]
-            resultArray.append(dic)
-        })
-        return resultArray
-
     }
 }

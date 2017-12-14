@@ -12,3 +12,6 @@ let EYErrorCodeNull = 0
 
 /// 参数错误
 let EYErrorCodeParams = 1000
+
+/// 用户注册失败
+let EYErrorCodeRegister = 1001

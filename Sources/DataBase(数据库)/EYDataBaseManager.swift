@@ -42,7 +42,7 @@ open class EYDataBaseManager {
     @discardableResult
     func insertDataBase(tableName: String, key: String, value: String) -> (isSuccess: Bool, result: MySQL.Results?, error: String?){
 
-        let SQL = "INSERT INTO \(tableName) (\(key)) VALUES (\(value))"
+        let SQL = "INSERT INTO \(tableName) (\(key)) VALUES (\(value));"
         return mysqlStatement(sql: SQL)
 
     }
@@ -57,7 +57,7 @@ open class EYDataBaseManager {
     @discardableResult
     func deleteDataBase(tableName: String, key: String, value: String) -> (isSuccess: Bool, result: MySQL.Results?, error: String?) {
 
-        let SQL = "DELETE FROM \(tableName) WHERE \(key) = '\(value)'"
+        let SQL = "DELETE FROM \(tableName) WHERE \(key) = '\(value)';"
         return mysqlStatement(sql: SQL)
 
     }
@@ -73,7 +73,7 @@ open class EYDataBaseManager {
     @discardableResult
     func updateDataBase(tableName: String, keyValue: String, whereKey: String, whereValue: String) -> (isSuccess: Bool, result: MySQL.Results?, error: String?) {
 
-        let SQL = "UPDATE \(tableName) SET \(keyValue) WHERE \(whereKey) = '\(whereValue)'"
+        let SQL = "UPDATE \(tableName) SET \(keyValue) WHERE \(whereKey) = '\(whereValue)';"
         return mysqlStatement(sql: SQL)
 
     }
@@ -88,7 +88,7 @@ open class EYDataBaseManager {
     @discardableResult
     func selectDataBase(tableName: String, selectKey: String = "*", otherSQLString: String = "") -> (isSuccess: Bool, result: MySQL.Results?, error: String?) {
 
-        let SQL = "SELECT \(selectKey) FROM \(tableName) \(otherSQLString)"
+        let SQL = "SELECT \(selectKey) FROM \(tableName) \(otherSQLString);"
         return mysqlStatement(sql: SQL)
 
     }
