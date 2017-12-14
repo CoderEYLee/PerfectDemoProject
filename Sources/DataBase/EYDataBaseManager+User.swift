@@ -3,9 +3,15 @@
 //  PerfectDemoProject
 //
 //  Created by gujiabin on 2017/12/14.
-//
+//  user的相关操作
 
 extension EYDataBaseManager {
+
+
+    /// 用户注册账号
+    func registerAccount() {
+        
+    }
 
     /// 查询t_user表中最大的user_id
     ///

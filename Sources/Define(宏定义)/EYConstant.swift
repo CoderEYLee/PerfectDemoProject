@@ -13,3 +13,6 @@ func EYLog<T>( _ message : T, file : String = #file, funcName : String = #functi
 
 /// base uri
 let EYBaseURIString = "/user"
+
+//用户注册
+let EYRegisterString = "/register"

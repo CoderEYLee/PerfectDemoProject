@@ -44,7 +44,7 @@ open class EYNetworkServerManager {
     /// - Parameter routes: 需要注册的路由
     fileprivate func configure(routes: inout Routes) {
 
-        routes.add(method: .post, uri: "/register") { (request, response) in
+        routes.add(method: .post, uri: EYRegisterString) { (request, response) in
             guard let params = request.postBodyString?.converToDictionary,
                   let account = params["account"],
                   let password = params["password"] else {
@@ -55,8 +55,7 @@ open class EYNetworkServerManager {
                 return
             }
             EYLog("插入数据库 \(account) \(password)")
-            let dataBaseManager = EYDataBaseManager.shared
-            let maxUserId = dataBaseManager.mysqlSelectMaxUserId()
+            let dataBaseManager = EYDataBaseManager.shared.registerAccount()
 
 
             let result = EYDataBaseManager.shared.mysqlSelectMaxUserId()
