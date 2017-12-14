@@ -7,16 +7,6 @@
 
 import PerfectMySQL
 
-//MARK: 数据库信息
-let mysql_host = "127.0.0.1"                    //访问的ip地址
-let mysql_user = "root"                         //数据库的用户名称
-let mysql_password = "LIeryang0811013!@#"       //用户的密码
-let mysql_database = "east_soft"                //要访问的数据库名称
-
-//MARK: 表信息
-/// 用户表
-let table_t_user = "t_user"        //表名称
-
 open class EYDataBaseManager {
 
     static let shared: EYDataBaseManager = EYDataBaseManager()
@@ -49,6 +39,7 @@ open class EYDataBaseManager {
     ///   - key: 键  （键，键，键）
     ///   - value: 值  ('值', '值', '值')
     /// - Returns: 返回元组(isSuccess:是否成功 result:结果 error:错误原因)
+    @discardableResult
     func insertDataBase(tableName: String, key: String, value: String) -> (isSuccess: Bool, result: MySQL.Results?, error: String?){
 
         let SQL = "INSERT INTO \(tableName) (\(key)) VALUES (\(value))"
@@ -63,6 +54,7 @@ open class EYDataBaseManager {
     ///   - key: 键
     ///   - value: 值
     /// - Returns: 返回元组(isSuccess:是否成功 result:结果 error:错误原因)
+    @discardableResult
     func deleteDataBase(tableName: String, key: String, value: String) -> (isSuccess: Bool, result: MySQL.Results?, error: String?) {
 
         let SQL = "DELETE FROM \(tableName) WHERE \(key) = '\(value)'"
@@ -78,6 +70,7 @@ open class EYDataBaseManager {
     ///   - whereKey: 查找key
     ///   - whereValue: 查找value
     /// - Returns: 返回元组(isSuccess:是否成功 result:结果 error:错误原因)
+    @discardableResult
     func updateDataBase(tableName: String, keyValue: String, whereKey: String, whereValue: String) -> (isSuccess: Bool, result: MySQL.Results?, error: String?) {
 
         let SQL = "UPDATE \(tableName) SET \(keyValue) WHERE \(whereKey) = '\(whereValue)'"
@@ -92,13 +85,14 @@ open class EYDataBaseManager {
     ///   - selectKey: 需要查询的字段字符串 "(id, XXX, XXX)" 默认为 "*"
     ///   - otherSQLString: 其他SQL语句 "where XXX AND XXX ORDER BY XXX"
     /// - Returns: 返回元组(isSuccess:是否成功 result:结果 error:错误原因)
+    @discardableResult
     func selectDataBase(tableName: String, selectKey: String = "*", otherSQLString: String = "") -> (isSuccess: Bool, result: MySQL.Results?, error: String?) {
 
         let SQL = "SELECT \(selectKey) FROM \(tableName) \(otherSQLString)"
         return mysqlStatement(sql: SQL)
 
     }
-    
+
     // MARK: ----------------------Private Methods----------------------
     /// 执行SQL语句
     ///
