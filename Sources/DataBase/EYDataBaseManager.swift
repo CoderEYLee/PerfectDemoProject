@@ -41,8 +41,7 @@ open class EYDataBaseManager {
 
     }
 
-
-
+    // MARK: ----------------------Public Methods----------------------
     /// 增
     ///
     /// - Parameters:
@@ -99,8 +98,8 @@ open class EYDataBaseManager {
         return mysqlStatement(sql: SQL)
 
     }
-
-    // MARK: ----------------------执行SQL语句----------------------
+    
+    // MARK: ----------------------Private Methods----------------------
     /// 执行SQL语句
     ///
     /// - Parameter sql: sql语句
