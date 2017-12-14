@@ -55,7 +55,11 @@ open class EYNetworkServerManager {
                 return
             }
             EYLog("插入数据库 \(account) \(password)")
-            let result = EYDataBaseManager.shared.mysqlSelectAllUser()
+            let dataBaseManager = EYDataBaseManager.shared
+            let maxUserId = dataBaseManager.mysqlSelectMaxUserId()
+
+
+            let result = EYDataBaseManager.shared.mysqlSelectMaxUserId()
             let jsonString = self.baseResponseBodyJSONData(status: 200, message: "成功", data: result)
             response.setBody(string: jsonString)
             response.completed()

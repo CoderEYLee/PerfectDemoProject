@@ -14,6 +14,7 @@ let mysql_password = "LIeryang0811013!@#"       //用户的密码
 let mysql_database = "east_soft"                //要访问的数据库名称
 
 //MARK: 表信息
+/// 用户表
 let table_t_user = "t_user"        //表名称
 
 open class EYDataBaseManager {
@@ -36,7 +37,6 @@ open class EYDataBaseManager {
             EYLog("MySQL连接失败" + mysql.errorMessage())
             return false
         }
-        EYLog("MySQL连接成功")
         return true
 
     }
@@ -44,7 +44,7 @@ open class EYDataBaseManager {
     //获取t_user表中所有数据
     func mysqlSelectAllUser() -> [Dictionary<String, String>]? {
 
-        let result = selectDatabaseSQL(tableName: table_t_user)
+        let result = selectDataBase(tableName: table_t_user)
         var resultArray = [Dictionary<String, String>]()
         var dic = [String:String]()
         result.mysqlResult?.forEachRow(callback: { (row) in
@@ -55,6 +55,26 @@ open class EYDataBaseManager {
         })
         return resultArray
 
+    }
+
+    /// 查询t_user表中最大的user_id
+    ///
+    /// - Returns: 最大的user_id
+    func mysqlSelectMaxUserId() -> Int {
+        let result = selectDataBase(tableName: table_t_user, selectKey: "user_id", otherSQLString: "ORDER BY user_id ASC;")
+        guard let sqlResult = result.mysqlResult else {
+            return -1
+        }
+
+        guard sqlResult.numRows() != 0 else {
+            return -1
+        }
+
+        var user_id = -1
+        result.mysqlResult?.forEachRow(callback: { (row) in
+            user_id = Int(row[0]!) ?? -1
+        })
+        return user_id
     }
 
     //MARK: 执行SQL语句
@@ -73,7 +93,6 @@ open class EYDataBaseManager {
             return (false, nil, "SQL失败: \(sql)")
         }
         let msg = "SQL成功: \(sql)"
-        EYLog(msg)
         return (true, mysql.storeResults(), msg)                            //sql执行成功
 
     }
@@ -84,7 +103,7 @@ open class EYDataBaseManager {
     ///   - tableName: 表
     ///   - key: 键  （键，键，键）
     ///   - value: 值  ('值', '值', '值')
-    func insertDatabaseSQL(tableName: String, key: String, value: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String){
+    func insertDataBase(tableName: String, key: String, value: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String){
 
         let SQL = "INSERT INTO \(tableName) (\(key)) VALUES (\(value))"
         return mysqlStatement(sql: SQL)
@@ -97,7 +116,7 @@ open class EYDataBaseManager {
     ///   - tableName: 表
     ///   - key: 键
     ///   - value: 值
-    func deleteDatabaseSQL(tableName: String, key: String, value: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
+    func deleteDataBase(tableName: String, key: String, value: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
 
         let SQL = "DELETE FROM \(tableName) WHERE \(key) = '\(value)'"
         return mysqlStatement(sql: SQL)
@@ -111,21 +130,9 @@ open class EYDataBaseManager {
     ///   - keyValue: 键值对的字符串 ( 键='值', 键='值', 键='值' )
     ///   - whereKey: 查找key
     ///   - whereValue: 查找value
-    func updateDatabaseSQL(tableName: String, keyValue: String, whereKey: String, whereValue: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
+    func updateDataBase(tableName: String, keyValue: String, whereKey: String, whereValue: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
 
         let SQL = "UPDATE \(tableName) SET \(keyValue) WHERE \(whereKey) = '\(whereValue)'"
-        return mysqlStatement(sql: SQL)
-
-    }
-
-    /// 查所有
-    ///
-    /// - Parameters:
-    ///   - tableName: 表
-    ///   - key: 键
-    func selectDatabaseSQL(tableName: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
-
-        let SQL = "SELECT * FROM \(tableName)"
         return mysqlStatement(sql: SQL)
 
     }
@@ -134,11 +141,20 @@ open class EYDataBaseManager {
     ///
     /// - Parameters:
     ///   - tableName: 表
-    ///   - keyValue: 键值对的字符串  键='值' AND 键='值' AND 键='值'
-    func selectDataBaseSQLWhere(tableName: String, keyValue: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
+    ///   - key: 键
 
-        let SQL = "SELECT * FROM \(tableName) WHERE \(keyValue)"
-		return mysqlStatement(sql: SQL)
+    /// 查
+    ///
+    /// - Parameters:
+    ///   - tableName: 表名
+    ///   - selectKey: 需要查询的字段字符串 "(id, XXX, XXX)" 默认为 "*"
+    ///   - otherSQLString: 其他SQL语句 "where XXX AND XXX ORDER BY XXX"
+    /// - Returns: 返回信息
+
+    func selectDataBase(tableName: String, selectKey: String = "*", otherSQLString: String = "") -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
+
+        let SQL = "SELECT \(selectKey) FROM \(tableName) \(otherSQLString)"
+        return mysqlStatement(sql: SQL)
 
     }
 }

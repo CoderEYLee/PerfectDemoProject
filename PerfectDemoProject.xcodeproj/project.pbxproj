@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC222A1A1FE23AC50012E82B /* EYDataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC222A191FE23AC50012E82B /* EYDataBaseManager.swift */; };
+		CC222A1D1FE23AFF0012E82B /* EYNetworkServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC222A1C1FE23AFF0012E82B /* EYNetworkServerManager.swift */; };
 		CC6BA3151FE0EB1000426ADD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6BA3141FE0EB0F00426ADD /* main.swift */; };
 		CC6BA3181FE0EB5600426ADD /* EYConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6BA3171FE0EB5600426ADD /* EYConstant.swift */; };
 		CC6BA31B1FE11D1D00426ADD /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6BA31A1FE11D1D00426ADD /* String+Extensions.swift */; };
 		CC6BA31D1FE1255800426ADD /* EYErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6BA31C1FE1255800426ADD /* EYErrorCode.swift */; };
-		CC7C123A1FDE785A0007F698 /* EYNetworkServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C12391FDE78590007F698 /* EYNetworkServerManager.swift */; };
-		CC7C12691FDF76400007F698 /* EYDataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C12681FDF76400007F698 /* EYDataBaseManager.swift */; };
 		OBJ_375 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_443 /* PerfectMustache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "PerfectMustache::PerfectMustache::Product" /* PerfectMustache.framework */; };
 		OBJ_444 /* PerfectMySQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "PerfectMySQL::PerfectMySQL::Product" /* PerfectMySQL.framework */; };
@@ -621,12 +621,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC222A191FE23AC50012E82B /* EYDataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EYDataBaseManager.swift; sourceTree = "<group>"; };
+		CC222A1C1FE23AFF0012E82B /* EYNetworkServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EYNetworkServerManager.swift; sourceTree = "<group>"; };
 		CC6BA3141FE0EB0F00426ADD /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		CC6BA3171FE0EB5600426ADD /* EYConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EYConstant.swift; sourceTree = "<group>"; };
 		CC6BA31A1FE11D1D00426ADD /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		CC6BA31C1FE1255800426ADD /* EYErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYErrorCode.swift; sourceTree = "<group>"; };
-		CC7C12391FDE78590007F698 /* EYNetworkServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYNetworkServerManager.swift; sourceTree = "<group>"; };
-		CC7C12681FDF76400007F698 /* EYDataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EYDataBaseManager.swift; sourceTree = "<group>"; };
 		"COpenSSL::COpenSSL::Product" /* COpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = COpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_103 /* a_.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = a_.c; sourceTree = "<group>"; };
 		OBJ_104 /* aes_.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = aes_.c; sourceTree = "<group>"; };
@@ -946,7 +946,7 @@
 		OBJ_99 /* PerfectCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectCrypto.swift; sourceTree = "<group>"; };
 		"PerfectCZlib::PerfectCZlib::Product" /* PerfectCZlib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PerfectCZlib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"PerfectCrypto::PerfectCrypto::Product" /* PerfectCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PerfectCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"PerfectDemoProject::PerfectDemoProject::Product" /* PerfectDemoProject */ = {isa = PBXFileReference; lastKnownFileType = text; path = PerfectDemoProject; sourceTree = BUILT_PRODUCTS_DIR; };
+		"PerfectDemoProject::PerfectDemoProject::Product" /* PerfectDemoProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = PerfectDemoProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		"PerfectHTTP::PerfectHTTP::Product" /* PerfectHTTP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PerfectHTTP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"PerfectHTTPServer::PerfectCHTTPParser::Product" /* PerfectCHTTPParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PerfectCHTTPParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"PerfectHTTPServer::PerfectHTTPServer::Product" /* PerfectHTTPServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PerfectHTTPServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1082,6 +1082,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC222A181FE23AC50012E82B /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				CC222A191FE23AC50012E82B /* EYDataBaseManager.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		CC222A1B1FE23AFF0012E82B /* NetworkServer */ = {
+			isa = PBXGroup;
+			children = (
+				CC222A1C1FE23AFF0012E82B /* EYNetworkServerManager.swift */,
+			);
+			path = NetworkServer;
+			sourceTree = "<group>";
+		};
 		CC6BA3131FE0EB0F00426ADD /* main(程序入口) */ = {
 			isa = PBXGroup;
 			children = (
@@ -1586,11 +1602,11 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CC222A1B1FE23AFF0012E82B /* NetworkServer */,
+				CC222A181FE23AC50012E82B /* DataBase */,
 				CC6BA3191FE11CD400426ADD /* Category */,
 				CC6BA3131FE0EB0F00426ADD /* main(程序入口) */,
 				CC6BA3161FE0EB5600426ADD /* Define(宏定义) */,
-				CC7C12681FDF76400007F698 /* EYDataBaseManager.swift */,
-				CC7C12391FDE78590007F698 /* EYNetworkServerManager.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -2175,9 +2191,9 @@
 			buildActionMask = 0;
 			files = (
 				CC6BA31B1FE11D1D00426ADD /* String+Extensions.swift in Sources */,
-				CC7C12691FDF76400007F698 /* EYDataBaseManager.swift in Sources */,
-				CC7C123A1FDE785A0007F698 /* EYNetworkServerManager.swift in Sources */,
+				CC222A1A1FE23AC50012E82B /* EYDataBaseManager.swift in Sources */,
 				CC6BA3151FE0EB1000426ADD /* main.swift in Sources */,
+				CC222A1D1FE23AFF0012E82B /* EYNetworkServerManager.swift in Sources */,
 				CC6BA3181FE0EB5600426ADD /* EYConstant.swift in Sources */,
 				CC6BA31D1FE1255800426ADD /* EYErrorCode.swift in Sources */,
 			);
@@ -3012,6 +3028,7 @@
 				);
 				INFOPLIST_FILE = PerfectDemoProject.xcodeproj/PerfectDemoProject_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/**";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-L/usr/local/Cellar/mysql/5.7.20/lib",
@@ -3041,6 +3058,7 @@
 				);
 				INFOPLIST_FILE = PerfectDemoProject.xcodeproj/PerfectDemoProject_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/**";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-L/usr/local/Cellar/mysql/5.7.20/lib",
