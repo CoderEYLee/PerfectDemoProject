@@ -8,11 +8,11 @@
 extension EYDataBaseManager {
 
     /// 用户注册账号
-    func registerAccount(account: String, password: String, completion: @escaping (Bool, [String : String], Int)->()) {
+    func registerAccount(account: String, password: String) ->(isSuccess: Bool, data: [String : String], errorCode: Int) {
         let user_id = mysqlSelectMaxUserId() + 1
         let name = account
         let insertResult = insertDataBase(tableName: table_t_user, key: "user_id, account, password, name", value: "\(user_id), '\(account)', '\(password)', '\(name)'")
-        EYLog("\(insertResult.isSuccess)")
+        return (insertResult.isSuccess, ["account" : account, "password" : password], EYErrorCodeNull)
     }
 
     /// 查询t_user表中最大的user_id

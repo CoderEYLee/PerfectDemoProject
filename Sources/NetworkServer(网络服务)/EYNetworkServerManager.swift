@@ -48,22 +48,16 @@ open class EYNetworkServerManager {
             guard let params = request.postBodyString?.converToDictionary,
                   let account = params["account"],
                   let password = params["password"] else {
-                    let result = ["errorCode": EYErrorCodeParams]
-                    let jsonString = self.baseResponseBodyJSONData(status: 200, message: "失败", data: result)
+                    let jsonString = self.baseResponseBodyJSONData(status: 200, errorCode: EYErrorCodeParams, data: "")
                     response.setBody(string: jsonString)
                     response.completed()
                 return
             }
-            EYLog("插入数据库 \(account) \(password)")
-            EYDataBaseManager.shared.registerAccount(account: account as! String, password: password as! String, completion: { (isSuccess, json, errorCode) in
-                
-            })
 
-
-//            let result = EYDataBaseManager.shared.mysqlSelectMaxUserId()
-//            let jsonString = self.baseResponseBodyJSONData(status: 200, message: "成功", data: result)
-//            response.setBody(string: jsonString)
-//            response.completed()
+            let result = EYDataBaseManager.shared.registerAccount(account: account as! String, password: password as! String)
+            let jsonString = self.baseResponseBodyJSONData(status: 200, errorCode: result.errorCode, data: result.data)
+            response.setBody(string: jsonString)
+            response.completed()
 
         }
 
@@ -76,11 +70,11 @@ open class EYNetworkServerManager {
     ///   - message: 描述信息
     ///   - data: 返回的数据信息
     /// - Returns: json字符串
-    private func baseResponseBodyJSONData(status: Int, message: String, data: Any!) -> String {
+    private func baseResponseBodyJSONData(status: Int, errorCode: Int, data: Any!) -> String {
 
         var result = Dictionary<String, Any>()
         result.updateValue(status, forKey: "status")
-        result.updateValue(message, forKey: "message")
+        result.updateValue(errorCode, forKey: "errorCode")
         if (data != nil) {
             result.updateValue(data, forKey: "data")
         } else {
