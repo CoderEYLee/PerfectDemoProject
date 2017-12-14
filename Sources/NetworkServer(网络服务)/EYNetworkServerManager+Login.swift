@@ -11,7 +11,7 @@ import PerfectHTTP
 extension EYNetworkServerManager {
     /// 注册接口
     func addLoginPort(routes: inout Routes) {
-        routes.add(method: .post, uri: EYRegisterString) { (request, response) in
+        routes.add(method: .post, uri: EYLoginString) { (request, response) in
             guard let params = request.postBodyString?.converToDictionary,
                 let account = params["account"],
                 let password = params["password"] else {
@@ -21,7 +21,7 @@ extension EYNetworkServerManager {
                     return
             }
 
-            let result = EYDataBaseManager.shared.registerAccount(account: account as! String, password: password as! String)
+            let result = EYDataBaseManager.shared.loginAccount(account: account as! String, password: password as! String)
             let jsonString = self.baseResponseBodyJSONData(status: 200, errorCode: result.errorCode, data: result.data)
             response.setBody(string: jsonString)
             response.completed()

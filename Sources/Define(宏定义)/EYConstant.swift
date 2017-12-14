@@ -26,3 +26,6 @@ let EYBaseURIString = "/user"
 
 /// 用户注册
 let EYRegisterString = "/register"
+
+/// 用户登录
+let EYLoginString = "/login"

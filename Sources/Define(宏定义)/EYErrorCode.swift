@@ -15,3 +15,9 @@ let EYErrorCodeParams = 1000
 
 /// 用户注册失败
 let EYErrorCodeRegister = 1001
+
+/// 用户账号已经存在
+let EYErrorCodeAccountExists = 1002
+
+/// 用户名或密码错误
+let EYErrorCodeAccountPassword = 1003

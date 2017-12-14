@@ -44,6 +44,7 @@ open class EYNetworkServerManager {
     /// - Parameter routes: 需要注册的路由
     private func configure(routes: inout Routes) {
         addRegisterPort(routes: &routes)
+        addLoginPort(routes: &routes)
     }
 
     /// 通用响应格式

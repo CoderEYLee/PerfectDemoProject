@@ -83,7 +83,7 @@ open class EYDataBaseManager {
     /// - Parameters:
     ///   - tableName: 表名
     ///   - selectKey: 需要查询的字段字符串 "(id, XXX, XXX)" 默认为 "*"
-    ///   - otherSQLString: 其他SQL语句 "where XXX AND XXX ORDER BY XXX"
+    ///   - otherSQLString: 其他SQL语句 "WHERE XXX AND XXX ORDER BY XXX"
     /// - Returns: 返回元组(isSuccess:是否成功 result:结果 error:错误原因)
     @discardableResult
     func selectDataBase(tableName: String, selectKey: String = "*", otherSQLString: String = "") -> (isSuccess: Bool, result: MySQL.Results?, error: String?) {
@@ -101,11 +101,13 @@ open class EYDataBaseManager {
     @discardableResult
     private func mysqlStatement(sql: String) -> (isSuccess: Bool, result: MySQL.Results?, error: String?) {
 
-        guard mysql.selectDatabase(named: mysql_database) else {         //指定database
+        guard mysql.selectDatabase(named: mysql_database) else {
+            EYLog("未找到\(mysql_database)数据库")
             return (false, nil, "未找到\(mysql_database)数据库")
         }
 
         guard mysql.query(statement: sql) else {
+            EYLog("执行SQL失败: \(sql)")
             return (false, nil, "SQL失败: \(sql)")
         }
 
