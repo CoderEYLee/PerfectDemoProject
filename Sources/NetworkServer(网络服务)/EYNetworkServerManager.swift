@@ -55,13 +55,15 @@ open class EYNetworkServerManager {
                 return
             }
             EYLog("插入数据库 \(account) \(password)")
-            let dataBaseManager = EYDataBaseManager.shared.registerAccount()
+            EYDataBaseManager.shared.registerAccount(account: account as! String, password: password as! String, completion: { (isSuccess, json, errorCode) in
+                
+            })
 
 
-            let result = EYDataBaseManager.shared.mysqlSelectMaxUserId()
-            let jsonString = self.baseResponseBodyJSONData(status: 200, message: "成功", data: result)
-            response.setBody(string: jsonString)
-            response.completed()
+//            let result = EYDataBaseManager.shared.mysqlSelectMaxUserId()
+//            let jsonString = self.baseResponseBodyJSONData(status: 200, message: "成功", data: result)
+//            response.setBody(string: jsonString)
+//            response.completed()
 
         }
 

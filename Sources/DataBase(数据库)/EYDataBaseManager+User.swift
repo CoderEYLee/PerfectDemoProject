@@ -7,10 +7,12 @@
 
 extension EYDataBaseManager {
 
-
     /// 用户注册账号
-    func registerAccount() {
-        
+    func registerAccount(account: String, password: String, completion: @escaping (Bool, [String : String], Int)->()) {
+        let user_id = mysqlSelectMaxUserId() + 1
+        let name = account
+        let insertResult = insertDataBase(tableName: table_t_user, key: "user_id, account, password, name", value: "\(user_id), '\(account)', '\(password)', '\(name)'")
+        EYLog("\(insertResult.isSuccess)")
     }
 
     /// 查询t_user表中最大的user_id
@@ -19,16 +21,16 @@ extension EYDataBaseManager {
     func mysqlSelectMaxUserId() -> Int {
         let selectResult = selectDataBase(tableName: table_t_user, selectKey: "user_id", otherSQLString: "ORDER BY user_id ASC;")
         guard let sqlResult = selectResult.result else {
-            return -1
+            return 0
         }
 
         guard sqlResult.numRows() != 0 else {
-            return -1
+            return 0
         }
 
-        var user_id = -1
+        var user_id = 0
         selectResult.result?.forEachRow(callback: { (row) in
-            user_id = Int(row[0]!) ?? -1
+            user_id = Int(row[0]!) ?? 0
         })
         return user_id
     }
