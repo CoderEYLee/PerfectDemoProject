@@ -73,16 +73,13 @@ open class EYNetworkServerManager {
         guard let jsonString = try? result.jsonEncodedString() else {
             return ""
         }
+        EYLog("服务器返回的json\n \(result)")
         return jsonString
 
     }
 
     /// 404过滤
     private struct Filter404: HTTPResponseFilter {
-
-        func filterBody(response: HTTPResponse, callback: (HTTPResponseFilterResult) -> ()) {
-            callback(.continue)
-        }
 
         func filterHeaders(response: HTTPResponse, callback: (HTTPResponseFilterResult) -> ()) {
             if case .notFound = response.status {
@@ -93,6 +90,10 @@ open class EYNetworkServerManager {
             } else {
                 callback(.continue)
             }
+        }
+
+        func filterBody(response: HTTPResponse, callback: (HTTPResponseFilterResult) -> ()) {
+            callback(.continue)
         }
     }
 }
