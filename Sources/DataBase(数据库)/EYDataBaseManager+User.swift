@@ -10,8 +10,7 @@ extension EYDataBaseManager {
     /// 用户注册账号
     func registerAccount(account: String, password: String) ->(isSuccess: Bool, data: [String : String], errorCode: Int) {
 
-        let selectResult = selectDataBase(tableName: table_t_user, selectKey: "COUNT(*) AS count", otherSQLString: "WHERE account = '\(account)'")
-
+        let selectResult = selectDataBase(tableName: table_t_user, otherSQLString: "WHERE account = '\(account)'")
         guard selectResult.result?.numRows() == 0 else {
             EYLog("该用户名已经存在")
             return (false, ["account" : account, "password" : password], EYErrorCodeAccountExists)
@@ -19,15 +18,26 @@ extension EYDataBaseManager {
 
         let user_id = mysqlSelectMaxUserId() + 1
         let name = account
-        let insertResult = insertDataBase(tableName: table_t_user, key: "user_id, account, password, name", value: "\(user_id), '\(account)', '\(password)', '\(name)'")
+        let insertResult = insertDataBase(tableName: table_t_user, key: "(user_id, account, password, name)", value: "(\(user_id), '\(account)', '\(password)', '\(name)')")
         return (insertResult.isSuccess, ["account" : account, "password" : password], insertResult.isSuccess ? EYErrorCodeNull : EYErrorCodeRegister)
     }
 
     /// 用户登录账号
     func loginAccount(account: String, password: String) ->(isSuccess: Bool, data: [String : String], errorCode: Int) {
         let selectResult = selectDataBase(tableName: table_t_user, selectKey: "(password)", otherSQLString: "WHERE account = '\(account)'")
-        EYLog("\(selectResult)")
-        return (selectResult.isSuccess, ["account" : account, "password" : password], selectResult.isSuccess ? EYErrorCodeNull : EYErrorCodeAccountPassword)
+        if selectResult.result?.numRows() == 0 {
+            EYLog("该用户名不存在")
+            return (selectResult.isSuccess, ["account" : account, "password" : password], EYErrorCodeAccountNotExists)
+        } else {
+            var isEqual = EYErrorCodeAccountPassword
+            selectResult.result?.forEachRow(callback: { (row) in
+                if password.elementsEqual(row[0]!) {
+                    isEqual = EYErrorCodeNull
+                }
+            })
+
+            return (selectResult.isSuccess, ["account" : account, "password" : password], isEqual)
+        }
     }
 
     /// 查询t_user表中最大的user_id

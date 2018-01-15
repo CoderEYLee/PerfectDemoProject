@@ -19,5 +19,8 @@ let EYErrorCodeRegister = 1001
 /// 用户账号已经存在
 let EYErrorCodeAccountExists = 1002
 
+/// 用户账号不存在,请先注册
+let EYErrorCodeAccountNotExists = 1003
+
 /// 用户名或密码错误
-let EYErrorCodeAccountPassword = 1003
+let EYErrorCodeAccountPassword = 1004

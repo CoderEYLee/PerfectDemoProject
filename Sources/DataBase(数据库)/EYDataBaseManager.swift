@@ -42,7 +42,7 @@ open class EYDataBaseManager {
     @discardableResult
     func insertDataBase(tableName: String, key: String, value: String) -> (isSuccess: Bool, result: MySQL.Results?, error: String?){
 
-        let SQL = "INSERT INTO \(tableName) (\(key)) VALUES (\(value));"
+        let SQL = "INSERT INTO \(tableName) \(key) VALUES \(value);"
         return mysqlStatement(sql: SQL)
 
     }
@@ -111,7 +111,7 @@ open class EYDataBaseManager {
             return (false, nil, "SQL失败: \(sql)")
         }
 
-        EYLog("执行SQL成功: \(sql)")
+        EYLog("执行SQL成功:\n \(sql)")
         return (true, mysql.storeResults(), nil)    //sql执行成功
     }
 }

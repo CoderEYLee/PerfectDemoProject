@@ -15,10 +15,8 @@ open class EYNetworkServerManager {
     fileprivate var server: HTTPServer
     internal init(root: String, port: UInt16) {
 
-        server = HTTPServer.init()                          //创建HTTPServer服务器
-        var routes = Routes.init(baseUri: EYBaseURIString)  //创建路由器
-        configure(routes: &routes)                          //注册路由
-        server.addRoutes(routes)                            //路由添加进服务
+        server = HTTPServer()                          //创建HTTPServer服务器
+        createRoute()
         server.serverPort = port                            //端口
         server.documentRoot = root                          //根目录
         server.setResponseFilters([(Filter404(), .high)])   //404过滤
@@ -39,6 +37,14 @@ open class EYNetworkServerManager {
 
     }
     // MARK: -----------------------private------------------------
+
+    /// 创建路由
+    private func createRoute() {
+        var routes = Routes(baseUri: EYBaseURIString)       //创建路由器
+        configure(routes: &routes)                          //注册路由
+        server.addRoutes(routes)                            //路由添加进服务
+    }
+
     //MARK: 注册路由
     ///
     /// - Parameter routes: 需要注册的路由
@@ -67,16 +73,13 @@ open class EYNetworkServerManager {
         guard let jsonString = try? result.jsonEncodedString() else {
             return ""
         }
+        EYLog("服务器返回的json\n \(result)")
         return jsonString
 
     }
 
     /// 404过滤
     private struct Filter404: HTTPResponseFilter {
-
-        func filterBody(response: HTTPResponse, callback: (HTTPResponseFilterResult) -> ()) {
-            callback(.continue)
-        }
 
         func filterHeaders(response: HTTPResponse, callback: (HTTPResponseFilterResult) -> ()) {
             if case .notFound = response.status {
@@ -87,6 +90,10 @@ open class EYNetworkServerManager {
             } else {
                 callback(.continue)
             }
+        }
+
+        func filterBody(response: HTTPResponse, callback: (HTTPResponseFilterResult) -> ()) {
+            callback(.continue)
         }
     }
 }
