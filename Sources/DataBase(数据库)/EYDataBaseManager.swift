@@ -6,10 +6,13 @@
 //
 
 import PerfectMySQL
+import Foundation
+import PerfectThread
 
 open class EYDataBaseManager {
 
     static let shared: EYDataBaseManager = EYDataBaseManager()
+    let threadLock = NSLock()
 
     fileprivate var mysql: MySQL
     internal init() {
@@ -100,7 +103,23 @@ open class EYDataBaseManager {
     /// - Returns: 返回元组(isSuccess:是否成功 result:结果 error:错误原因)
     @discardableResult
     private func mysqlStatement(sql: String) -> (isSuccess: Bool, result: MySQL.Results?, error: String?) {
+        
+// MARK: - threadLock
+//        threadLock.lock()
+//        guard mysql.selectDatabase(named: mysql_database) else {
+//            EYLog("未找到\(mysql_database)数据库")
+//            threadLock.unlock()
+//            return (false, nil, "未找到\(mysql_database)数据库")
+//        }
+//
+//        guard mysql.query(statement: sql) else {
+//            EYLog("执行SQL失败: \(sql)")
+//            threadLock.unlock()
+//            return (false, nil, "SQL失败: \(sql)")
+//        }
+//        threadLock.unlock()
 
+// MARK: - 无锁
         guard mysql.selectDatabase(named: mysql_database) else {
             EYLog("未找到\(mysql_database)数据库")
             return (false, nil, "未找到\(mysql_database)数据库")
