@@ -6,10 +6,13 @@
 //
 
 import PerfectMySQL
+import Foundation
+import PerfectThread
 
 open class EYDataBaseManager {
 
     static let shared: EYDataBaseManager = EYDataBaseManager()
+    let threadLock = NSLock()
 
     fileprivate var mysql: MySQL
     internal init() {
@@ -100,18 +103,32 @@ open class EYDataBaseManager {
     /// - Returns: 返回元组(isSuccess:是否成功 result:结果 error:错误原因)
     @discardableResult
     private func mysqlStatement(sql: String) -> (isSuccess: Bool, result: MySQL.Results?, error: String?) {
+//        如果需要切换数据库才需要这句代码(本工程目前只有一个数据库并且已经提前连接了)
+//        guard mysql.selectDatabase(named: mysql_database) else {
+//            EYLog("未找到\(mysql_database)数据库")
+//            return (false, nil, "未找到\(mysql_database)数据库")
+//        }
 
-        guard mysql.selectDatabase(named: mysql_database) else {
-            EYLog("未找到\(mysql_database)数据库")
-            return (false, nil, "未找到\(mysql_database)数据库")
-        }
-
+// MARK: - threadLock
+        threadLock.lock()
         guard mysql.query(statement: sql) else {
             EYLog("执行SQL失败: \(sql)")
+            threadLock.unlock()
             return (false, nil, "SQL失败: \(sql)")
         }
+        threadLock.unlock()
+// MARK: - 无锁
+//        guard mysql.query(statement: sql) else {
+//            EYLog("执行SQL失败: \(sql)")
+//            return (false, nil, "SQL失败: \(sql)")
+//        }
 
         EYLog("执行SQL成功:\n \(sql)")
-        return (true, mysql.storeResults(), nil)    //sql执行成功
+        return (true, mysql.storeResults(), nil)
+    }
+
+    deinit {
+        EYLog("关闭数据库连接")
+        mysql.close() //关闭数据库连接
     }
 }
