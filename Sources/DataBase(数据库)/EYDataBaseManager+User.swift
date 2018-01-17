@@ -44,7 +44,7 @@ extension EYDataBaseManager {
     ///
     /// - Returns: 最大的user_id
     private func mysqlSelectMaxUserId() -> Int {
-        let selectResult = selectDataBase(tableName: table_t_user, selectKey: "user_id", otherSQLString: "ORDER BY user_id ASC;")
+        let selectResult = selectDataBase(tableName: table_t_user, selectKey: "user_id", otherSQLString: "ORDER BY user_id ASC")
         guard let sqlResult = selectResult.result else {
             return 0
         }
