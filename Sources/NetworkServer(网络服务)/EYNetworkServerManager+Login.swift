@@ -9,7 +9,7 @@ import Foundation
 import PerfectHTTP
 
 extension EYNetworkServerManager {
-    /// 注册接口
+    /// 登录接口
     func addLoginPort(routes: inout Routes) {
         routes.add(method: .post, uri: EYLoginString) { (request, response) in
             guard let account = request.param(name: "account"),

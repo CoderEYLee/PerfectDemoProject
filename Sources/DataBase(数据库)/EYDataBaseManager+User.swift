@@ -29,14 +29,14 @@ extension EYDataBaseManager {
             EYLog("该用户名不存在")
             return (selectResult.isSuccess, ["account" : account, "password" : password], EYErrorCodeAccountNotExists)
         } else {
-            var isEqual = EYErrorCodeAccountPassword
+            var errorCode = EYErrorCodeAccountPassword
             selectResult.result?.forEachRow(callback: { (row) in
                 if password.elementsEqual(row[0]!) {
-                    isEqual = EYErrorCodeNull
+                    errorCode = EYErrorCodeNull
                 }
             })
 
-            return (selectResult.isSuccess, ["account" : account, "password" : password], isEqual)
+            return (selectResult.isSuccess, ["account" : account, "password" : password], errorCode)
         }
     }
 
@@ -44,7 +44,7 @@ extension EYDataBaseManager {
     ///
     /// - Returns: 最大的user_id
     private func mysqlSelectMaxUserId() -> Int {
-        let selectResult = selectDataBase(tableName: table_t_user, selectKey: "user_id", otherSQLString: "ORDER BY user_id ASC;")
+        let selectResult = selectDataBase(tableName: table_t_user, selectKey: "user_id", otherSQLString: "ORDER BY user_id ASC")
         guard let sqlResult = selectResult.result else {
             return 0
         }
