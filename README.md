@@ -6,10 +6,11 @@
 本Demo实用步骤:                    
 ### 1> 下载本工程
 ```
-git clone XXXX
+git clone https://github.com/lieryang/PerfectDemoProject.git
 ```
 ### 2> 终端进入到PerfectDemoProject文件夹下 执行指令: swift build  (过程可能有点长,时间长短就看你的网速啦!!!)      
 ```
+cd PerfectDemoProject
 ```
 
 ### 3> 修改EYConstant.swift 文件中数据库信息和表信息
