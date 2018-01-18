@@ -16,5 +16,13 @@ swift build (过程可能有点长,时间长短就看你的网速啦!!!)
 
 ### 3> 修改EYConstant.swift 文件中数据库信息和表信息
 ```
+// MARK: ----------------------数据库信息----------------------
+let mysql_host = "127.0.0.1"        //访问的ip地址
+let mysql_user = "root"             //数据库的用户名称
+let mysql_password = "123456"       //用户的密码
+let mysql_database = "testDataBase" //要访问的数据库名称
 
+// MARK: ------------------------表信息------------------------
+/// 用户表
+let table_t_user = "t_user"
 ```
